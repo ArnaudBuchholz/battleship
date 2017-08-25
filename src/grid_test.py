@@ -65,6 +65,3 @@ class TestGrid(unittest.TestCase):
         grid.set(5, 5, Grid.BOAT + Grid.BOMB)
         self.assertEqual(grid.get(5, 5), Grid.BOAT + Grid.BOMB)
         self.assertEqual(grid.get(4, 4), Grid.EMPTY)
-
-if __name__ == '__main__':
-    unittest.main()
