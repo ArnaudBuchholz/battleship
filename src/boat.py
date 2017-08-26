@@ -10,19 +10,18 @@ class Boat:
 
     def __init__(self, size):
         self.size = size
-        self.remaining = size
 
     def _place(self, grid, x, y, dir):
         dif_x = Boat._DIR_X[dir]
         dif_y = Boat._DIR_Y[dir]
         # Will simplify testing if the x, y coordinates hit the boat
-        self.min_x = x
-        self.min_y = y
-        self.max_x = x + dif_x * (self.size - 1)
-        self.max_y = y + dif_y * (self.size - 1)
+        self.pos_x = []
+        self.pos_y = []
         remaining = self.size
         while remaining > 0:
             grid.set(x, y, grid.BOAT)
+            self.pos_x.append(x)
+            self.pos_y.append(y)
             remaining -= 1
             x += dif_x
             y += dif_y
@@ -46,7 +45,15 @@ class Boat:
         return False
 
     def hit(self, x, y):
-        if (x < self.min_x or x > self.max_x or y < self.min_y or y > self.max_y):
-            return False
-        self.remaining -= 1
-        return True
+        remaining = len(self.pos_x)
+        index = 0
+        while index < remaining:
+            if self.pos_x[index] == x and self.pos_y[index] == y:
+                self.pos_x.pop(index)
+                self.pos_y.pop(index)
+                return True
+            index += 1
+        return False
+
+    def getRemaining(self):
+        return len(self.pos_x)
