@@ -42,10 +42,6 @@ class TestGrid(unittest.TestCase):
         grid = Grid(10, 10)
         self.assertEqual(grid.wasBombed(5, 5), False)
 
-    def test_wasBombed(self):
-        grid = Grid(10, 10)
-        self.assertEqual(grid.wasBombed(5, 5), False)
-
     def test_bombInWater(self):
         grid = Grid(10, 10)
         self.assertEqual(grid.bomb(5, 5), False)
