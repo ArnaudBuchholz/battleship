@@ -86,7 +86,7 @@ class TestGrid(unittest.TestCase):
         boat = Boat(5)
         grid = Grid(10, 10)
         self.assertEqual(boat.place(grid, 2, 2, boat.DIR_RIGHT), True)
-        self.assertEqual(boat.remaining, 5)
+        self.assertEqual(boat.getRemaining(), 5)
         # Miss
         self.assertEqual(boat.hit(1, 2), False)
         self.assertEqual(boat.hit(2, 1), False)
@@ -94,7 +94,10 @@ class TestGrid(unittest.TestCase):
         self.assertEqual(boat.hit(7, 2), False)
         # Hit
         self.assertEqual(boat.hit(2, 2), True)
-        self.assertEqual(boat.remaining, 4)
+        self.assertEqual(boat.getRemaining(), 4)
+        # Can't hit a second time at the same pos
+        self.assertEqual(boat.hit(2, 2), False)
+        self.assertEqual(boat.getRemaining(), 4)
 
 
 
