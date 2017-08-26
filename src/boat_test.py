@@ -72,6 +72,16 @@ class TestGrid(unittest.TestCase):
         # Can't anymore
         self.assertEqual(boat.place(grid, 0, 2, boat.DIR_RIGHT), False)
 
+    def test_placingTwoBoats(self):
+        boat1 = Boat(5)
+        boat2 = Boat(2)
+        grid = Grid(10, 10)
+        boat1.place(grid, 0, 0, Boat.DIR_RIGHT)
+        # Can't place over an existing boat
+        self.assertEqual(boat2.place(grid, 0, 0, Boat.DIR_DOWN), False)
+        # Can place anywhere else
+        self.assertEqual(boat2.place(grid, 0, 1, Boat.DIR_DOWN), True)
+
     def test_hit(self):
         boat = Boat(5)
         grid = Grid(10, 10)
