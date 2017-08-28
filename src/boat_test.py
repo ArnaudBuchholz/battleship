@@ -99,5 +99,18 @@ class TestBoat(unittest.TestCase):
         self.assertEqual(boat.hit(2, 2), False)
         self.assertEqual(boat.getRemaining(), 4)
 
-
-
+    def test_placingRandomly(self):
+        boat = Boat(5)
+        grid = Grid(10, 10)
+        boat.place(grid)
+        self.assertEqual(len(boat.pos_x), 5)
+        self.assertEqual(len(boat.pos_y), 5)
+        # Trying to hit the boat
+        while boat.getRemaining() > 0:
+            remaining = boat.getRemaining()
+            x = boat.pos_x[0]
+            y = boat.pos_y[0]
+            self.assertEqual(boat.hit(x, y), True)
+            self.assertEqual(boat.getRemaining(), remaining - 1)
+            self.assertEqual(boat.hit(x, y), False)
+            self.assertEqual(boat.getRemaining(), remaining - 1)
