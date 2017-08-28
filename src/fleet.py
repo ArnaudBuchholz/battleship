@@ -15,3 +15,9 @@ class Fleet:
                     self.size -= 1
                 return True
         return False
+
+    def place(self, grid):
+        for boat in self.boats:
+            if not boat.place(grid):
+                return False
+        return True
