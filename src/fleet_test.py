@@ -26,3 +26,8 @@ class TestFleet(unittest.TestCase):
         # Finish him
         self.assertEqual(fleet.hit(0, 1), True)
         self.assertEqual(fleet.size, 1)
+
+    def test_placeRandomly(self):
+        fleet = Fleet([5, 4, 3, 3, 2])
+        grid = Grid(10, 10)
+        self.assertEqual(fleet.place(grid), True)
