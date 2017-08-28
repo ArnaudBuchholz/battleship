@@ -2,7 +2,7 @@ import unittest
 from boat import Boat
 from grid import Grid
 
-class TestGrid(unittest.TestCase):
+class TestBoat(unittest.TestCase):
 
     def test_constructor(self):
         boat = Boat(5)
