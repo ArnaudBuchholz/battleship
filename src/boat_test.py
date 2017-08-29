@@ -2,6 +2,7 @@ import unittest
 from boat import Boat
 from grid import Grid
 
+
 class TestBoat(unittest.TestCase):
 
     def test_constructor(self):
@@ -86,7 +87,7 @@ class TestBoat(unittest.TestCase):
         boat = Boat(5)
         grid = Grid(10, 10)
         self.assertEqual(boat.place(grid, 2, 2, boat.DIR_RIGHT), True)
-        self.assertEqual(boat.getRemaining(), 5)
+        self.assertEqual(boat.remaining, 5)
         # Miss
         self.assertEqual(boat.hit(1, 2), False)
         self.assertEqual(boat.hit(2, 1), False)
@@ -94,10 +95,10 @@ class TestBoat(unittest.TestCase):
         self.assertEqual(boat.hit(7, 2), False)
         # Hit
         self.assertEqual(boat.hit(2, 2), True)
-        self.assertEqual(boat.getRemaining(), 4)
+        self.assertEqual(boat.remaining, 4)
         # Can't hit a second time at the same pos
         self.assertEqual(boat.hit(2, 2), False)
-        self.assertEqual(boat.getRemaining(), 4)
+        self.assertEqual(boat.remaining, 4)
 
     def test_placingRandomly(self):
         boat = Boat(5)
@@ -106,11 +107,11 @@ class TestBoat(unittest.TestCase):
         self.assertEqual(len(boat.pos_x), 5)
         self.assertEqual(len(boat.pos_y), 5)
         # Trying to hit the boat
-        while boat.getRemaining() > 0:
-            remaining = boat.getRemaining()
+        while boat.remaining > 0:
+            remaining = boat.remaining
             x = boat.pos_x[0]
             y = boat.pos_y[0]
             self.assertEqual(boat.hit(x, y), True)
-            self.assertEqual(boat.getRemaining(), remaining - 1)
+            self.assertEqual(boat.remaining, remaining - 1)
             self.assertEqual(boat.hit(x, y), False)
-            self.assertEqual(boat.getRemaining(), remaining - 1)
+            self.assertEqual(boat.remaining, remaining - 1)
