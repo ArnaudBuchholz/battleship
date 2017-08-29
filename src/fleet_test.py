@@ -3,6 +3,7 @@ from boat import Boat
 from grid import Grid
 from fleet import Fleet
 
+
 class TestFleet(unittest.TestCase):
 
     def test_constructor(self):
