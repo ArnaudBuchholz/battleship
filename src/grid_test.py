@@ -1,6 +1,7 @@
 import unittest
 from grid import Grid
 
+
 class TestGrid(unittest.TestCase):
 
     def test_constructor(self):
