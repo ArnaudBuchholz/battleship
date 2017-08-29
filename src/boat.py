@@ -1,5 +1,6 @@
 import random
 
+
 class Boat:
 
     DIR_DOWN = 0
@@ -14,6 +15,7 @@ class Boat:
 
     def __init__(self, size):
         self.size = size
+        self.remaining = size
 
     def _place(self, grid, x, y, dir):
         dif_x = Boat._DIR_X[dir]
@@ -71,9 +73,7 @@ class Boat:
             if self.pos_x[index] == x and self.pos_y[index] == y:
                 self.pos_x.pop(index)
                 self.pos_y.pop(index)
+                self.remaining = len(self.pos_x)
                 return True
             index += 1
         return False
-
-    def getRemaining(self):
-        return len(self.pos_x)
