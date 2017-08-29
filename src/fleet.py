@@ -1,5 +1,6 @@
 from boat import Boat
 
+
 class Fleet:
 
     def __init__(self, boatSizes):
@@ -11,7 +12,7 @@ class Fleet:
     def hit(self, x, y):
         for boat in self.boats:
             if boat.hit(x, y):
-                if boat.getRemaining() == 0:
+                if boat.remaining == 0:
                     self.size -= 1
                 return True
         return False
